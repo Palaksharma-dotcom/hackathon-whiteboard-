@@ -4,24 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whiteboard app</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/ico"/>
+    <title>Whiteboard Paint</title>
+    <link rel="shortcut icon" href="./images/512.png" type="image/ico"/>
     <link rel="stylesheet" href="hackathon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="fields">
-        <canvas id="canvas"> </canvas>
-        <div class="tools">
-            <button onclick="undo_last()" type="button" class="button">Undo</button>
-            <button onclick="clear_canvas()" type="button" class="button">Clear</button>
-            <div onclick="change_color(this)" class="color-field" style="background: red;"></div>
+
+      
+    <div id="canvas-wrap">
+    <div class="fields">  
+        <div class="tools" id="overlay">
+            <div id="rectangle" class="colorf1 hide" onclick="rectanglle()"  style="top: 100px;
+            position: absolute;
+            left: 700px;
+            width: 150px;
+            height: 150px;
+            border: 2px solid black;
+            opacity:1;"></div>
+           <div id="circle" class="colorf2 hide"  onclick="circlee()" style="position: absolute;
+           /* resize: both; */
+           /* overflow: hidden; */
+           height: 150px;
+           width: 150px;
+           border-radius: 50%;
+           border: 3px solid black;
+           top: 100px;
+           left: 400px;
+           opacity:1;"></div> 
+            <button onclick="undo_last()" type="button" class="button" title="undo"><span class="material-icons md-48">undo</span></button>
+            <button onclick="clear_canvas()" type="button" class="button" title="clear"><span class="material-icons md-48">clear
+                </span></button>
+            <!-- <div onclick="change_color(this)" class="color-field" style="background: red;"></div>
             <div onclick="change_color(this)" class="color-field" style="background: blue;"></div>
-            <div onclick="change_color(this)" class="color-field" style="background: green;"></div>
-            <div onclick="change_color(this)" class="color-field" style="background: yellow;"></div>
-            <input oninput="draw_color=this.value" type="color" class="color-picker">    <!-- will select the input coor from panel -->
-            <input type="range" min="1" max="100" class="pen-range"
+            <div onclick="change_color(this)" class="color-field" style="background: green;"></div> -->
+            <div onclick="change_backgroundcolor(this)" class="color-field" title="Set-Background-Color"style="background: red;"></div>
+            <input oninput="start_background_color=this.value" type="color" class="color-picker" title="Color-Picker(Ba)">
+            <input oninput="draw_color=this.value" type="color" class="color-picker" title="Color-Picker(PEN)">  
+            <div onclick="change_color(this)" class="color-field"  title="Set-Pen-Color" style="background: rgb(255, 0, 0);"></div>
+            <div onclick="eraser(this)" class="eee" style="background: white;" title="Eraser" ><i class="fas fa-eraser"></i></div>
+            <div class = "color-field" id="rec" onclick="rec()"title="Rectangle" ><span class="material-icons md-48">crop_5_4</span></div>
+            <div class = "color-field" id="cir" onclick="cir()" title="Circle"><span class="material-icons md-48">circle</span></div>  <!-- will select the input coor from panel -->
+            <input type="range" min="1" max="100" class="pen-range" title="Brush-Size"
             oninput="draw_width=this.value">
         </div>
+        <canvas id="canvas"> </canvas>
+        <button id="theme" onclick="myFunction()" title="change-theme"><span class="material-icons md-48">light_mode</span></button>
+        <div class="popup center">
+            <!-- <div class="icon">
+              <i class="fa fa-check"></i>
+            </div> -->
+            <div class="title">
+              Need Help!!
+            </div>
+            <div class="description">
+              <img class="imghelp" src="./images/help.png">
+              <div>
+                <p id="dis">UNDO</p>
+                <p id="dis">CLEAR</p>
+                <p id="dis">Press after selecting Background color</p>
+                <p id="dis">Background Color Picker</p>
+                <p id="dis">Pen Color Picker</p>
+                <p id="dis">Press after selecting Pen color</p>
+                <p id="dis">Eraser</p>
+                <p id="dis">Get Rectangular Shape</p>
+                <p id="dis">Get Circular Shape</p>
+                <p id="dis">Brush Size</p>
+              </div>
+            </div>
+            <div class="dismiss-btn">
+              <button id="dismiss-popup-btn">
+                Dismiss
+              </button>
+            </div>
+          </div>
+          <div class="center1">
+            <button id="open-popup-btn"title="Need Help!!">
+                <span id="info" class="material-icons md-48" > help</span>
+            </button>
+          </div>
+          
+          
+</div>
 </div>
   <script src="hackathon.js"></script>
 </body>
